@@ -1,93 +1,46 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SSFlightLegCalc.Models;
 
 namespace SSFlightLegCalc.ViewModels;
 
-public class MainViewModel : INotifyPropertyChanged
+public partial class MainViewModel : ObservableObject
 {
+    [ObservableProperty]
     private string _track = "";
-    private string _tas = "";
+
+    [ObservableProperty]
+    private string _tAS = "";
+
+    [ObservableProperty]
     private string _windDirection = "";
+
+    [ObservableProperty]
     private string _windSpeed = "";
+
+    [ObservableProperty]
     private string _distance = "";
-    private string _wca = "";
+
+    [ObservableProperty]
+    private string _wCA = "";
+
+    [ObservableProperty]
     private string _heading = "";
+
+    [ObservableProperty]
     private string _groundSpeed = "";
+
+    [ObservableProperty]
     private string _legTime = "";
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasError))]
     private string _errorMessage = "";
-
-    public string Track
-    {
-        get => _track;
-        set { _track = value; OnPropertyChanged(); }
-    }
-
-    public string TAS
-    {
-        get => _tas;
-        set { _tas = value; OnPropertyChanged(); }
-    }
-
-    public string WindDirection
-    {
-        get => _windDirection;
-        set { _windDirection = value; OnPropertyChanged(); }
-    }
-
-    public string WindSpeed
-    {
-        get => _windSpeed;
-        set { _windSpeed = value; OnPropertyChanged(); }
-    }
-
-    public string Distance
-    {
-        get => _distance;
-        set { _distance = value; OnPropertyChanged(); }
-    }
-
-    public string WCA
-    {
-        get => _wca;
-        set { _wca = value; OnPropertyChanged(); }
-    }
-
-    public string Heading
-    {
-        get => _heading;
-        set { _heading = value; OnPropertyChanged(); }
-    }
-
-    public string GroundSpeed
-    {
-        get => _groundSpeed;
-        set { _groundSpeed = value; OnPropertyChanged(); }
-    }
-
-    public string LegTime
-    {
-        get => _legTime;
-        set { _legTime = value; OnPropertyChanged(); }
-    }
-
-    public string ErrorMessage
-    {
-        get => _errorMessage;
-        set { _errorMessage = value; OnPropertyChanged(); OnPropertyChanged(nameof(HasError)); }
-    }
 
     public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
 
-    public ICommand CalculateCommand { get; }
-
-    public MainViewModel()
-    {
-        CalculateCommand = new Command(OnCalculate);
-    }
-
-    private void OnCalculate()
+    [RelayCommand]
+    private void Calculate()
     {
         ErrorMessage = "";
         ClearOutputs();
@@ -139,12 +92,5 @@ public class MainViewModel : INotifyPropertyChanged
         Heading = "";
         GroundSpeed = "";
         LegTime = "";
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
