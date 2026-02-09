@@ -36,6 +36,10 @@ ScaffoldingReadMe.txt
 # NuGet Symbol Packages
 *.snupkg
 
+# Visual Studio
+.vs/
+*.csproj.user
+
 # Others
 ~$*
 *~
