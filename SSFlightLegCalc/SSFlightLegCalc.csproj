@@ -23,4 +23,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\SSFlightLegCalc.Core\SSFlightLegCalc.Core.csproj" />
+	</ItemGroup>
+
 </Project>
