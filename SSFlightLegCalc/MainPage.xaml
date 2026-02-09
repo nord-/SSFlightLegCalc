@@ -41,6 +41,7 @@
 
             <!-- Calculate Button -->
             <Button Text="Calculate" Command="{Binding CalculateCommand}"
+                    Clicked="OnCalculateClicked"
                     FontAttributes="Bold"
                     Margin="0,8,0,0" />
 

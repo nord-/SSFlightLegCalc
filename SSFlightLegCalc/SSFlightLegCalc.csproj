@@ -9,7 +9,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
-        <ApplicationTitle>SS Flight Leg Calc</ApplicationTitle>
+        <ApplicationTitle>Flight Leg Calculator</ApplicationTitle>
         <ApplicationId>com.ssflightlegcalc.app</ApplicationId>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>

@@ -6,4 +6,11 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private void OnCalculateClicked(object? sender, EventArgs e)
+    {
+#if ANDROID
+        Platform.CurrentActivity?.CurrentFocus?.ClearFocus();
+#endif
+    }
 }
