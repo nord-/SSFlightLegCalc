@@ -19,24 +19,29 @@
                   ColumnSpacing="12" RowSpacing="8">
 
                 <Label Grid.Row="0" Grid.Column="0" Text="Track (°)" VerticalOptions="Center" />
-                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Track}"
-                       Keyboard="Numeric" Placeholder="0–360" />
+                <Entry x:Name="EntryTrack" Grid.Row="0" Grid.Column="1" Text="{Binding Track}"
+                       Keyboard="Numeric" Placeholder="0–360"
+                       ReturnType="Next" Completed="OnEntryCompleted" />
 
                 <Label Grid.Row="1" Grid.Column="0" Text="TAS (kt)" VerticalOptions="Center" />
-                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding TAS}"
-                       Keyboard="Numeric" Placeholder="e.g. 120" />
+                <Entry x:Name="EntryTAS" Grid.Row="1" Grid.Column="1" Text="{Binding TAS}"
+                       Keyboard="Numeric" Placeholder="e.g. 120"
+                       ReturnType="Next" Completed="OnEntryCompleted" />
 
                 <Label Grid.Row="2" Grid.Column="0" Text="Wind Dir (°)" VerticalOptions="Center" />
-                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding WindDirection}"
-                       Keyboard="Numeric" Placeholder="0–360" />
+                <Entry x:Name="EntryWindDir" Grid.Row="2" Grid.Column="1" Text="{Binding WindDirection}"
+                       Keyboard="Numeric" Placeholder="0–360"
+                       ReturnType="Next" Completed="OnEntryCompleted" />
 
                 <Label Grid.Row="3" Grid.Column="0" Text="Wind Spd (kt)" VerticalOptions="Center" />
-                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding WindSpeed}"
-                       Keyboard="Numeric" Placeholder="e.g. 20" />
+                <Entry x:Name="EntryWindSpd" Grid.Row="3" Grid.Column="1" Text="{Binding WindSpeed}"
+                       Keyboard="Numeric" Placeholder="e.g. 20"
+                       ReturnType="Next" Completed="OnEntryCompleted" />
 
                 <Label Grid.Row="4" Grid.Column="0" Text="Distance (NM)" VerticalOptions="Center" />
-                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Distance}"
-                       Keyboard="Numeric" Placeholder="e.g. 50" />
+                <Entry x:Name="EntryDistance" Grid.Row="4" Grid.Column="1" Text="{Binding Distance}"
+                       Keyboard="Numeric" Placeholder="e.g. 50"
+                       ReturnType="Done" Completed="OnLastEntryCompleted" />
             </Grid>
 
             <!-- Calculate Button -->
