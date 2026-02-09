@@ -106,10 +106,10 @@ public class MainViewModel : INotifyPropertyChanged
             return;
         }
 
-        WCA = $"{result.WCA:+0.0;-0.0;0.0}°";
-        Heading = $"{result.Heading:0.0}°";
-        GroundSpeed = $"{result.GroundSpeed:0.0} kt";
-        LegTime = $"{(int)result.LegTime.TotalMinutes:D2}:{result.LegTime.Seconds:D2}";
+        WCA = $"{result.WCA:+0;-0;0}°";
+        Heading = $"{result.Heading:0}°";
+        GroundSpeed = $"{result.GroundSpeed:0} kt";
+        LegTime = $"{(int)result.LegTime.TotalHours:D2}:{result.LegTime.Minutes:D2}";
     }
 
     private bool TryParseInput(string input, string fieldName, double min, double max, out double value)

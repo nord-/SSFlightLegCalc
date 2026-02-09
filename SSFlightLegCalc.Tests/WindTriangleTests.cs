@@ -12,11 +12,11 @@ public class WindTriangleTests
         var result = WindTriangle.Calculate(360, 120, 270, 20, 50);
 
         Assert.NotNull(result);
-        Assert.Equal(-9.6, result.WCA, 0.5);
-        Assert.Equal(350.4, result.Heading, 0.5);
-        Assert.Equal(118.3, result.GroundSpeed, 0.5);
-        // Time ≈ 50/118.3 ≈ 0.4226 hours ≈ 25:21
-        Assert.InRange(result.LegTime.TotalMinutes, 25, 26);
+        Assert.Equal(-10, result.WCA);
+        Assert.Equal(350, result.Heading);
+        Assert.Equal(118, result.GroundSpeed);
+        // Time ≈ 50/118.3 ≈ 25.36 min → ceiling = 26 min
+        Assert.Equal(26, result.LegTime.TotalMinutes);
     }
 
     [Fact]
@@ -25,10 +25,10 @@ public class WindTriangleTests
         var result = WindTriangle.Calculate(90, 100, 0, 0, 100);
 
         Assert.NotNull(result);
-        Assert.Equal(0.0, result.WCA);
-        Assert.Equal(90.0, result.Heading);
-        Assert.Equal(100.0, result.GroundSpeed);
-        Assert.Equal(60, result.LegTime.TotalMinutes, 0.1);
+        Assert.Equal(0, result.WCA);
+        Assert.Equal(90, result.Heading);
+        Assert.Equal(100, result.GroundSpeed);
+        Assert.Equal(60, result.LegTime.TotalMinutes);
     }
 
     [Fact]
@@ -38,10 +38,10 @@ public class WindTriangleTests
         var result = WindTriangle.Calculate(0, 100, 0, 30, 70);
 
         Assert.NotNull(result);
-        Assert.Equal(0.0, result.WCA);
-        Assert.Equal(0.0, result.Heading);
-        Assert.Equal(70.0, result.GroundSpeed);
-        Assert.Equal(60, result.LegTime.TotalMinutes, 0.1);
+        Assert.Equal(0, result.WCA);
+        Assert.Equal(0, result.Heading);
+        Assert.Equal(70, result.GroundSpeed);
+        Assert.Equal(60, result.LegTime.TotalMinutes);
     }
 
     [Fact]
@@ -51,10 +51,10 @@ public class WindTriangleTests
         var result = WindTriangle.Calculate(0, 100, 180, 30, 130);
 
         Assert.NotNull(result);
-        Assert.Equal(0.0, result.WCA);
-        Assert.Equal(0.0, result.Heading);
-        Assert.Equal(130.0, result.GroundSpeed);
-        Assert.Equal(60, result.LegTime.TotalMinutes, 0.1);
+        Assert.Equal(0, result.WCA);
+        Assert.Equal(0, result.Heading);
+        Assert.Equal(130, result.GroundSpeed);
+        Assert.Equal(60, result.LegTime.TotalMinutes);
     }
 
     [Fact]

@@ -32,13 +32,14 @@ public static class WindTriangle
         if (gs <= 0)
             return null; // No forward progress possible
 
-        double timeHours = distance / gs;
+        double timeMinutes = distance / gs * 60.0;
+        int ceilMinutes = (int)Math.Ceiling(timeMinutes);
 
         return new WindTriangleResult(
-            WCA: Math.Round(ToDegrees(wca), 1),
-            Heading: Math.Round(heading, 1),
-            GroundSpeed: Math.Round(gs, 1),
-            LegTime: TimeSpan.FromHours(timeHours));
+            WCA: Math.Round(ToDegrees(wca)),
+            Heading: Math.Round(heading),
+            GroundSpeed: Math.Round(gs),
+            LegTime: TimeSpan.FromMinutes(ceilMinutes));
     }
 
     private static double ToRadians(double degrees) => degrees * Math.PI / 180.0;
