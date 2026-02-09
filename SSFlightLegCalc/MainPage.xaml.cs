@@ -10,7 +10,14 @@ public partial class MainPage : ContentPage
     private void OnCalculateClicked(object? sender, EventArgs e)
     {
 #if ANDROID
-        Platform.CurrentActivity?.CurrentFocus?.ClearFocus();
+        var activity = Platform.CurrentActivity;
+        if (activity?.CurrentFocus is Android.Views.View view)
+        {
+            var imm = (Android.Views.InputMethods.InputMethodManager?)
+                activity.GetSystemService(Android.Content.Context.InputMethodService);
+            imm?.HideSoftInputFromWindow(view.WindowToken, 0);
+            view.ClearFocus();
+        }
 #endif
     }
 }
