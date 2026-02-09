@@ -45,13 +45,13 @@ public partial class MainViewModel : ObservableObject
         ErrorMessage = "";
         ClearOutputs();
 
-        if (!TryParseInput(Track, "Track", 0, 360, out double track)) return;
-        if (!TryParseInput(TAS, "TAS", 0.1, 10000, out double tas)) return;
-        if (!TryParseInput(WindDirection, "Wind Direction", 0, 360, out double windDir)) return;
-        if (!TryParseInput(WindSpeed, "Wind Speed", 0, 10000, out double windSpd)) return;
-        if (!TryParseInput(Distance, "Distance", 0.1, 100000, out double dist)) return;
+        if (!TryParseInput(Track, "Track", 0, 360, out int track)) return;
+        if (!TryParseInput(TAS, "TAS", 1, 10000, out int tas)) return;
+        if (!TryParseInput(WindDirection, "Wind Direction", 0, 360, out int windDir)) return;
+        if (!TryParseInput(WindSpeed, "Wind Speed", 0, 10000, out int windSpd)) return;
+        if (!TryParseInput(Distance, "Distance", 1, 100000, out int dist)) return;
 
-        var result = WindTriangle.Calculate(track, tas, windDir, windSpd, dist);
+        var result = WindTriangle.Calculate(track, tas, windDir, windSpd, (double)dist);
 
         if (result is null)
         {
@@ -65,7 +65,7 @@ public partial class MainViewModel : ObservableObject
         LegTime = $"{(int)result.LegTime.TotalHours:D2}:{result.LegTime.Minutes:D2}";
     }
 
-    private bool TryParseInput(string input, string fieldName, double min, double max, out double value)
+    private bool TryParseInput(string input, string fieldName, int min, int max, out int value)
     {
         value = 0;
         if (string.IsNullOrWhiteSpace(input))
@@ -73,9 +73,9 @@ public partial class MainViewModel : ObservableObject
             ErrorMessage = $"{fieldName} is required.";
             return false;
         }
-        if (!double.TryParse(input, System.Globalization.CultureInfo.InvariantCulture, out value))
+        if (!int.TryParse(input, System.Globalization.CultureInfo.InvariantCulture, out value))
         {
-            ErrorMessage = $"{fieldName} must be a valid number.";
+            ErrorMessage = $"{fieldName} must be a whole number.";
             return false;
         }
         if (value < min || value > max)
