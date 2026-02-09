@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SSFlightLegCalc.ViewModels"
+             x:Class="SSFlightLegCalc.MainPage"
+             Title="Flight Leg Calculator">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <!-- Input Section -->
+            <Label Text="Input" FontSize="20" FontAttributes="Bold" />
+
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                  ColumnSpacing="12" RowSpacing="8">
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Track (°)" VerticalOptions="Center" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Track}"
+                       Keyboard="Numeric" Placeholder="0–360" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="TAS (kt)" VerticalOptions="Center" />
+                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding TAS}"
+                       Keyboard="Numeric" Placeholder="e.g. 120" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Wind Dir (°)" VerticalOptions="Center" />
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding WindDirection}"
+                       Keyboard="Numeric" Placeholder="0–360" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Wind Spd (kt)" VerticalOptions="Center" />
+                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding WindSpeed}"
+                       Keyboard="Numeric" Placeholder="e.g. 20" />
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Distance (NM)" VerticalOptions="Center" />
+                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Distance}"
+                       Keyboard="Numeric" Placeholder="e.g. 50" />
+            </Grid>
+
+            <!-- Calculate Button -->
+            <Button Text="Calculate" Command="{Binding CalculateCommand}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource White}"
+                    FontAttributes="Bold"
+                    Margin="0,8,0,0" />
+
+            <!-- Error Message -->
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" FontAttributes="Bold"
+                   IsVisible="{Binding HasError}" />
+
+            <!-- Output Section -->
+            <Label Text="Results" FontSize="20" FontAttributes="Bold" Margin="0,8,0,0" />
+
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto"
+                  ColumnSpacing="12" RowSpacing="8">
+
+                <Label Grid.Row="0" Grid.Column="0" Text="WCA:" FontAttributes="Bold" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding WCA}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Heading:" FontAttributes="Bold" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Heading}" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Ground Speed:" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding GroundSpeed}" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Leg Time (mm:ss):" FontAttributes="Bold" />
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding LegTime}" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
