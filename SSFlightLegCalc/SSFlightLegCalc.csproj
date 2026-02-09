@@ -15,6 +15,12 @@
         <ApplicationVersion>1</ApplicationVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <AndroidKeyStore>true</AndroidKeyStore>
+        <AndroidSigningKeyStore>ssflightlegcalc.keystore</AndroidSigningKeyStore>
+        <AndroidSigningKeyAlias>ssflightlegcalc</AndroidSigningKeyAlias>
+    </PropertyGroup>
+
     <ItemGroup>
         <MauiIcon Include="Resources\AppIcon\appicon.png" />
     </ItemGroup>

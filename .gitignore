@@ -57,5 +57,8 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
+# Keystore
+*.keystore
+
 # Claude Code
 .claude/settings.local.json
