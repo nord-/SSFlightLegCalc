@@ -55,22 +55,20 @@
                    IsVisible="{Binding HasError}" />
 
             <!-- Output Section -->
-            <Label Text="Results" FontSize="20" FontAttributes="Bold" Margin="0,8,0,0" />
-
             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto"
-                  ColumnSpacing="12" RowSpacing="8">
+                  ColumnSpacing="12" RowSpacing="8" Margin="0,8,0,0">
 
-                <Label Grid.Row="0" Grid.Column="0" Text="WCA:" FontAttributes="Bold" />
-                <Label Grid.Row="0" Grid.Column="1" Text="{Binding WCA}" />
+                <Label Grid.Row="0" Grid.Column="0" Text="WCA:" FontAttributes="Bold" FontSize="18" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding WCA}" FontSize="18" />
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Heading:" FontAttributes="Bold" />
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Heading}" />
+                <Label Grid.Row="1" Grid.Column="0" Text="Heading:" FontAttributes="Bold" FontSize="18" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Heading}" FontSize="18" />
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Ground Speed:" FontAttributes="Bold" />
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding GroundSpeed}" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Ground Speed:" FontAttributes="Bold" FontSize="18" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding GroundSpeed}" FontSize="18" />
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Leg Time (hh:mm):" FontAttributes="Bold" />
-                <Label Grid.Row="3" Grid.Column="1" Text="{Binding LegTime}" />
+                <Label Grid.Row="3" Grid.Column="0" Text="Leg Time (hh:mm):" FontAttributes="Bold" FontSize="18" />
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding LegTime}" FontSize="18" />
             </Grid>
 
         </VerticalStackLayout>
