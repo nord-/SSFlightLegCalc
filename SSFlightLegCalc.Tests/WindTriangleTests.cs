@@ -15,8 +15,8 @@ public class WindTriangleTests
         Assert.Equal(-10, result.WCA);
         Assert.Equal(350, result.Heading);
         Assert.Equal(118, result.GroundSpeed);
-        // Time ≈ 50/118.3 ≈ 25.36 min → ceiling = 26 min
-        Assert.Equal(26, result.LegTime.TotalMinutes);
+        // Time ≈ 50/118.3 ≈ 25.36 min → rounded = 25 min
+        Assert.Equal(25, result.LegTime.TotalMinutes);
     }
 
     [Fact]
