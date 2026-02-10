@@ -9,7 +9,16 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        _entries = [EntryTrack, EntryTAS, EntryWindDir, EntryWindSpd, EntryDistance];
+        _entries = [EntryTrack, EntryDistance, EntryTAS, EntryWindDir, EntryWindSpd, EntryFuelBurn];
+    }
+
+    private void OnEntryFocused(object? sender, FocusEventArgs e)
+    {
+        if (sender is Entry entry && !string.IsNullOrEmpty(entry.Text))
+        {
+            entry.CursorPosition = 0;
+            entry.SelectionLength = entry.Text.Length;
+        }
     }
 
     private void OnEntryCompleted(object? sender, EventArgs e)

@@ -22,6 +22,9 @@ public partial class MainViewModel : ObservableObject
     private string _distance = "";
 
     [ObservableProperty]
+    private string _fuelBurn = "";
+
+    [ObservableProperty]
     private string _wCA = "";
 
     [ObservableProperty]
@@ -32,6 +35,9 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private string _legTime = "";
+
+    [ObservableProperty]
+    private string _fuelUsed = "";
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasError))]
@@ -63,6 +69,17 @@ public partial class MainViewModel : ObservableObject
         Heading = $"{result.Heading:0}°";
         GroundSpeed = $"{result.GroundSpeed:0} kt";
         LegTime = $"{(int)result.LegTime.TotalHours:D2}:{result.LegTime.Minutes:D2}";
+
+        if (!string.IsNullOrWhiteSpace(FuelBurn))
+        {
+            if (!int.TryParse(FuelBurn, System.Globalization.CultureInfo.InvariantCulture, out int fuelRate) || fuelRate < 1)
+            {
+                ErrorMessage = "Fuel Burn must be a positive whole number.";
+                return;
+            }
+            double liters = result.LegTime.TotalHours * fuelRate;
+            FuelUsed = $"{(int)Math.Ceiling(liters)} l";
+        }
     }
 
     private bool TryParseInput(string input, string fieldName, int min, int max, out int value)
@@ -92,5 +109,6 @@ public partial class MainViewModel : ObservableObject
         Heading = "";
         GroundSpeed = "";
         LegTime = "";
+        FuelUsed = "";
     }
 }
